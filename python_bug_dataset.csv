@@ -1,0 +1,33 @@
+id,code_snippet,bug_type,bug_description,severity,fixed_code_snippet
+1,print 'Hello World',SyntaxError,Missing parentheses in call to 'print',High,print('Hello World')
+2,"x = 10
+y = '5'
+z = x + y",TypeError,Unsupported operand types for +: 'int' and 'str',Medium,z = x + int(y)
+3,"my_list = [1, 2, 3]
+print(my_list[5])",IndexError,List index out of range,High,print(my_list[-1])  # Or check length before accessing
+4,"def func(a, b=2, c):
+    return a + b + c",SyntaxError,Non-default argument follows default argument,High,"def func(a, c, b=2): return a + b + c"
+5,"for i in range(3):
+    print(i)
+  print('Done')",IndentationError,Unexpected indent in the last print statement,Medium,"for i in range(3):
+    print(i)
+print('Done')"
+6,"import maths
+print(maths.sqrt(16))",ModuleNotFoundError,"Incorrect module name (should be 'math', not 'maths')",Low,"import math
+print(math.sqrt(16))"
+7,"x = [1, 2, 3]
+print(x.pop(5))",IndexError,Popping an index out of range,High,print(x.pop(-1))  # Or check index before popping
+8,"def greet():
+    return 'Hello'
+print(greet(123))",TypeError,Function takes 0 arguments but 1 was given,Medium,"def greet(name='User'):
+    return f'Hello {name}'
+print(greet('Alice'))"
+9,"d = {'a': 1, 'b': 2}
+print(d['c'])",KeyError,Accessing a non-existent key in a dictionary,Low,"print(d.get('c', 'Key not found'))"
+10,"with open('file.txt', 'r') as f:
+    content = f.read()
+print(content)",FileNotFoundError,Trying to open a file that does not exist,High,"import os
+if os.path.exists('file.txt'):
+    with open('file.txt', 'r') as f:
+        content = f.read()
+    print(content)"
